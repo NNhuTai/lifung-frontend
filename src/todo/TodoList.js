@@ -98,9 +98,11 @@ class TodoList extends Component {
 
     handleChange = (event) => {
         console.log(event.target.value);
-        if (event.target.value == '') { 
-            this.setState({userN: event.target.value,
-                listFilter: this.state.list});
+        if (event.target.value == '') {
+            this.setState({
+                userN: event.target.value,
+                listFilter: this.state.list
+            });
         }
         else {
             this.setState({
@@ -125,7 +127,7 @@ class TodoList extends Component {
             <div>
                 <div className="search-wrapper">
                     <label htmlFor="search-form">
-                    <span className="sr-only"> Search Todo here</span>
+                        <span className="sr-only"> Search Todo here</span>
                         <input
                             type="search"
                             name="search-form"
@@ -141,11 +143,14 @@ class TodoList extends Component {
                         />
                     </label>
                 </div>
+                <br></br>
+
                 <span className="sr-only"> Search by UserID </span>
                 <select value={value} onChange={this.handleChange}>
                     <option value=''></option>
                     {userList}
                 </select>
+                <br></br>
                 <section>
                     <nav>
                         <ul>
@@ -186,9 +191,9 @@ class TodoList extends Component {
                     value={this.state.userId}
                     onKeyPress={(event) => {
                         if (!/[0-9]/.test(event.key)) {
-                          event.preventDefault();
+                            event.preventDefault();
                         }
-                      }}
+                    }}
                     onChange={(e) => {
                         this.setState({
                             userId: e.target.value
