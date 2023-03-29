@@ -125,6 +125,7 @@ class TodoList extends Component {
             <div>
                 <div className="search-wrapper">
                     <label htmlFor="search-form">
+                    <span className="sr-only"> Search Todo here</span>
                         <input
                             type="search"
                             name="search-form"
@@ -138,13 +139,12 @@ class TodoList extends Component {
                             */
                             onChange={(e) => this.setQ(e.target.value)}
                         />
-                        <span className="sr-only"> Search Todo here</span>
                     </label>
                 </div>
+                <span className="sr-only"> Search by UserID </span>
                 <select value={value} onChange={this.handleChange}>
                     <option value=''></option>
                     {userList}
-
                 </select>
                 <section>
                     <nav>
@@ -184,6 +184,11 @@ class TodoList extends Component {
                     className="form-control"
                     placeholder="userId"
                     value={this.state.userId}
+                    onKeyPress={(event) => {
+                        if (!/[0-9]/.test(event.key)) {
+                          event.preventDefault();
+                        }
+                      }}
                     onChange={(e) => {
                         this.setState({
                             userId: e.target.value
