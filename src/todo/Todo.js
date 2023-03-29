@@ -3,9 +3,11 @@ class Todo extends Component {
     render() {
         return (
             <div>
-                <p>Name: {this.props.name}</p> 
-                <p>description:  {this.props.description}</p>
-                <p>userId: {this.props.userId}</p>
+                <ul>
+                <li><b>Name:</b> {this.props.name}</li>
+                <li><b>Description: </b> {this.props.description}</li>
+                <li><b>UserId: </b>{this.props.userId}</li>
+                </ul>
             </div>)
     }
 }
