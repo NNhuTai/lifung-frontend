@@ -78,7 +78,7 @@ class TodoList extends Component {
     setQ = (value) => {
         this.setState({
             search: value,
-            detail: {}
+            detail: {},
         });
     }
     handleClick = () => {
@@ -117,7 +117,8 @@ class TodoList extends Component {
         const listItems = this.state.listFilter.filter(task => task.name.includes(this.state.search)).map((todo) =>
             <li key={todo.id}><a onClick={() => this.seleteItem(todo.id)}>{todo.name} </a></li>
         );
-        const userList = this.state.userListId.map((todo) =>
+        const uniqueArr = [...new Set(this.state.userListId)];
+        const userList = uniqueArr.map((todo) =>
             <option value={todo}>{todo}</option>
         );
 
@@ -127,7 +128,7 @@ class TodoList extends Component {
             <div>
                 <div className="search-wrapper">
                     <label htmlFor="search-form">
-                        <span className="sr-only"> Search Todo here</span>
+                        <span className="sr-only"> Search Todo Name here </span>
                         <input
                             type="search"
                             name="search-form"
@@ -150,7 +151,6 @@ class TodoList extends Component {
                     <option value=''></option>
                     {userList}
                 </select>
-                <br></br>
                 <section>
                     <nav>
                         <ul>
